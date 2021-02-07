@@ -33,18 +33,27 @@ public class IntegerWheel extends Wheel<Integer> implements Rollable {
 
     @Override
     public Boolean isRolledOver(){
-        return getValue() > getMax() || getValue() < getMin();
+        return getValue()  > getMax() || getValue() < getMin();
     }
     @Override
     public void rollUp() {
        int next = getValue() + 1;
-       super.setValue(next);
+
+       if (next > getMax()) {
+           super.setValue(getMin());
+       } else {
+           super.setValue(next);
+       }
     }
 
     @Override
     public void rollDown() {
         int prev = getValue() -1;
-        super.setValue(prev);
+        if(prev < getMin()){
+            super.setValue(getMax());
+        } else {
+            super.setValue(prev);
+        }
     }
 
 
