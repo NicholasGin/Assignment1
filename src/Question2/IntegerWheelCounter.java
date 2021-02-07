@@ -6,34 +6,41 @@ import java.util.Random;
 
 public class IntegerWheelCounter extends IntegerWheel implements CounterDisplay {
 
+    // define variables and create random object
     private IntegerWheel[] integerWheel = new IntegerWheel[3];
     private int noOfWheels;
     Random random = new Random();
 
+    // Constructor with 3 parameters
     public IntegerWheelCounter(IntegerWheel wheelThree, IntegerWheel wheelTwo, IntegerWheel wheelOne){
         super(0);
         integerWheel[0] = wheelThree;
         integerWheel[1] = wheelTwo;
         integerWheel[2] = wheelOne;
 
+        // number of wheels = length of integerWheel array
         noOfWheels = integerWheel.length;
     }
 
+    // toString with proper format for single digit integers
     public String toString(){
         String hour, min, sec;
 
+        // first wheel
         if (integerWheel[0].getValue() < 10) {
             hour = "0" + integerWheel[0].getValue();
         } else {
             hour = integerWheel[0].getValue().toString();
         }
 
+        // second wheel
         if (integerWheel[1].getValue() < 10) {
             min = "0" + integerWheel[1].getValue();
         } else {
             min = integerWheel[1].getValue().toString();
         }
 
+        // third wheel
         if (integerWheel[2].getValue() < 10) {
             sec = "0" + integerWheel[2].getValue();
         } else {

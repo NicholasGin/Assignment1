@@ -4,8 +4,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ClockDemo extends TimerTask {
-    static IntegerWheel seconds = new IntegerWheel(0, 60);
-    static IntegerWheel minutes = new IntegerWheel(0, 60);
+    static IntegerWheel seconds = new IntegerWheel(0, 59);
+    static IntegerWheel minutes = new IntegerWheel(0, 59);
     static IntegerWheel hours = new IntegerWheel(0, 23);
     static IntegerWheelCounter theClock = new IntegerWheelCounter(hours, minutes, seconds);
 
