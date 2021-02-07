@@ -11,6 +11,7 @@ public class IntegerWheel extends Wheel<Integer> implements Rollable {
    public IntegerWheel(int max) {
         minValue = 0;
         maxValue = max;
+        super.setValue(max);
    }
    public IntegerWheel(int min, int max) {
         minValue = min;

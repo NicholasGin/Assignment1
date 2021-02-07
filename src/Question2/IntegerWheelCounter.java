@@ -58,7 +58,6 @@ public class IntegerWheelCounter extends IntegerWheel implements CounterDisplay 
         // generate a random number between the min and max values
         for (int i = 0; i < noOfWheels; i++){
             integerWheel[i].setValue(random.nextInt(integerWheel[i].getMax()));
-            //integerWheel[i].setValue(integerWheel[i].getMax());
         }
 
     }
@@ -83,8 +82,14 @@ public class IntegerWheelCounter extends IntegerWheel implements CounterDisplay 
     @Override
     // decrement the counter
     public void decrease() {
-        for (int i =0; i < noOfWheels; i++) {
-            integerWheel[i].rollDown();
+        if(integerWheel[1].getValue() -1 < integerWheel[1].getMin() && integerWheel[2].getValue() -1 < integerWheel[2].getMin()){
+            integerWheel[0].rollDown();
+
         }
+        if (integerWheel[2].getValue() -1 < integerWheel[2].getMin()){
+            integerWheel[1].rollDown();
+
+        }
+        integerWheel[2].rollDown();
     }
 }
