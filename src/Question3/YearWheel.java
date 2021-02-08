@@ -6,7 +6,10 @@ import Question2.Wheel;
 public class YearWheel extends Wheel<Integer> implements Rollable{
     private int year;
 
-
+    public YearWheel(int year) {
+        this.year = year;
+        super.setValue(year);
+    }
     public boolean isLeapYear(){
         return year % 4 == 0;
     }
@@ -22,7 +25,7 @@ public class YearWheel extends Wheel<Integer> implements Rollable{
 
     @Override
     public void reset() {
-        super.setValue(0);
+        super.setValue(year);
     }
 
     @Override
