@@ -5,6 +5,8 @@ import Question2.Wheel;
 
 public class WeekDaysWheel extends Wheel<Integer> implements Rollable {
 
+    // zellers congruence, finds the day of the week given a date
+    // january & february counted as 13 and 14th month of the previous year
     public String zellersCongruence(int day, int month, int year){
         if (month == 1)
         {

@@ -4,15 +4,20 @@ import Question1.Rollable;
 import Question2.Wheel;
 
 public class MonthWheel extends Wheel<Integer> implements Rollable{
+
+    // define local variables
     private int minValue = 1;
     private int maxValue = 12;
     private int initialMonth;
     private int monthLength;
 
+    // Constructor sets the initialMonth
     public MonthWheel(int month) {
         initialMonth = month;
         super.setValue(month);
     }
+
+    // getter methods for min, max, month length, and month name
     public int getMin() {
         return minValue;
     }
@@ -25,6 +30,7 @@ public class MonthWheel extends Wheel<Integer> implements Rollable{
         return monthLength;
     }
 
+    // converts numeric representation of month to String
     public String getMonthName(int month){
 
         switch (month) {
@@ -67,35 +73,40 @@ public class MonthWheel extends Wheel<Integer> implements Rollable{
         }
         return null;
     }
+
+    // checks ifRolledOver, increases month by 1
     @Override
     public void rollUp() {
         int next = getValue() + 1;
 
-        if (next > getMax()) {
+        if (isRolledOver()) {
             super.setValue(getMin());
         } else {
             super.setValue(next);
         }
     }
 
+    // checks ifRolledOver, decreases month by 1
     @Override
     public void rollDown() {
         int prev = getValue() - 1;
 
-        if (prev < getMin()) {
+        if (isRolledOver()) {
             super.setValue(getMax());
         } else {
             super.setValue(prev);
         }
     }
 
+    // sets value to initial value
     @Override
     public void reset() {
         super.setValue(initialMonth);
     }
 
+    // checks if the next or previous value exceeds the bounds
     @Override
     public Boolean isRolledOver() {
-        return getValue() > getMax();
+        return (getValue() +1 > getMax() || getValue() -1 < getMin());
     }
 }

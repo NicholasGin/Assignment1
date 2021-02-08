@@ -4,12 +4,15 @@ import Question1.Rollable;
 import Question2.Wheel;
 
 public class DayWheel extends Wheel<Integer> implements Rollable {
+
+    // define local variables
     private int minValue = 1;
     private int maxValue;
-    private int day;
+    private int initialDay;
 
+    // Constructor
     public DayWheel(int day) {
-        this.day = day;
+        initialDay = day;
         super.setValue(day);
     }
 
@@ -24,39 +27,44 @@ public class DayWheel extends Wheel<Integer> implements Rollable {
         return maxValue;
     }
 
+    // sets the maximum value of the wheel
     public void setMax(int max) {
         maxValue = max;
     }
 
+    // checks ifRolledOver, increases day by 1
     @Override
     public void rollUp() {
         int next = getValue() + 1;
 
-        if (next > getMax()) {
+        if (isRolledOver()) {
             super.setValue(getMin());
         } else {
             super.setValue(next);
         }
     }
 
+    // checks ifRolledOver, decreases day by 1
     @Override
     public void rollDown() {
         int prev = getValue() -1;
 
-        if (prev < getMin()) {
+        if (isRolledOver()) {
             super.setValue(getMax());
         } else {
             super.setValue(prev);
         }
     }
 
+    // sets value to initial value
     @Override
     public void reset() {
-        super.setValue(day);
+        super.setValue(initialDay);
     }
 
+    // checks if the next or previous value exceeds the bounds
     @Override
     public Boolean isRolledOver() {
-        return getValue() > getMax() || getValue() < getMin();
+        return getValue() +1> getMax() || getValue()-1 < getMin();
     }
 }
